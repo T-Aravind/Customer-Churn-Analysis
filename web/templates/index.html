@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RetainIQ — Enterprise Customer Retention Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/app.css?v=2.2" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">RI</div>
+        <div>
+          <p class="brand-name">RetainIQ</p>
+          <p class="brand-sub">Enterprise Retention Intelligence</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn is-active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="upload">Upload &amp; Validate</button>
+        <button class="nav-btn" data-page="dashboard">Executive Dashboard</button>
+        <button class="nav-btn" data-page="segments">Segment Diagnostics</button>
+        <button class="nav-btn" data-page="model">Model Lab</button>
+        <button class="nav-btn" data-page="insights">Model Insights</button>
+        <button class="nav-btn" data-page="score">Risk Scoring</button>
+        <button class="nav-btn" data-page="playbook">Retention Playbook</button>
+        <button class="nav-btn" data-page="exports">Reports &amp; Delivery</button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="status-card" id="sidebar-status">
+          <span class="dot"></span>
+          <span>No dataset loaded</span>
+        </div>
+        <p class="legal">Confidential · Enterprise Workspace</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="page-kicker">Workspace</p>
+          <h1 id="page-title">Home</h1>
+        </div>
+        <div class="top-actions">
+          <a class="btn btn-ghost" href="/api/sample" title="Download approved sample dataset">Download sample file</a>
+          <button class="btn btn-secondary" id="btn-reset" type="button">Clear workspace</button>
+          <button class="btn btn-primary" data-go="upload" type="button">Upload customer file</button>
+        </div>
+      </header>
+      <div id="alert" class="alert" hidden></div>
+      <section id="pages"></section>
+    </main>
+  </div>
+  <script src="/static/js/app.js?v=2.2"></script>
+</body>
+</html>
