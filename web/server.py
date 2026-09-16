@@ -312,3 +312,10 @@ def reset(response: Response, retainiq_session: str | None = Cookie(default=None
     """Wipe active workspace session and clear state."""
     sid = _session_id(response, retainiq_session)
     return get_workspace(sid).reset()
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
