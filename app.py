@@ -29,10 +29,11 @@ if sys.platform == "win32":
 try:
     import streamlit as st
     if st.runtime.exists():
-        from app.streamlit_app import main as st_main
+        from streamlit_app import main as st_main
         st_main()
 except Exception:
     pass
+
 
 
 
@@ -122,7 +123,7 @@ def main() -> None:
         from tests.run_all_tests import run_suite
         run_suite()
     elif args.streamlit:
-        cmd = [sys.executable, "-m", "streamlit", "run", str(PROJECT_ROOT / "app" / "streamlit_app.py")]
+        cmd = [sys.executable, "-m", "streamlit", "run", str(PROJECT_ROOT / "streamlit_app.py")]
         subprocess.run(cmd)
     else:
         import uvicorn
