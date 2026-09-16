@@ -25,6 +25,16 @@ if sys.platform == "win32":
     except Exception:
         pass
 
+# Auto-detect if executed by Streamlit runner / Streamlit Cloud
+try:
+    import streamlit as st
+    if st.runtime.exists():
+        from app.streamlit_app import main as st_main
+        st_main()
+except Exception:
+    pass
+
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(

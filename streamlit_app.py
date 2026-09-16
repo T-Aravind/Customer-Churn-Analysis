@@ -10,5 +10,5 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from app.streamlit_app import main
 
-if __name__ == "__main__":
-    main()
+main()
+
