@@ -72,7 +72,13 @@ def render_overview(df: pd.DataFrame) -> None:
 def render_model_metrics() -> None:
     st.subheader("Model Performance")
     if not METRICS_PATH.exists():
-        st.warning("Train the model first: `python src/train.py`")
+        st.warning("Model metrics not found. Train the model first:")
+        if st.button("Train Candidate Models", key="train_metrics_btn", type="primary"):
+            with st.spinner("Training models and computing metrics..."):
+                from train import main as train_main
+                train_main()
+                st.success("Training complete! Reloading metrics...")
+                st.rerun()
         return
 
     metrics = json.loads(METRICS_PATH.read_text())
@@ -175,7 +181,14 @@ def main() -> None:
             get_model()
             render_predictor()
         except FileNotFoundError as exc:
-            st.error(str(exc))
+            st.warning("Churn prediction model is not yet trained.")
+            if st.button("Train Model Now", key="train_pred_btn", type="primary"):
+                with st.spinner("Training model on baseline dataset..."):
+                    from train import main as train_main
+                    train_main()
+                    st.cache_resource.clear()
+                    st.success("Model trained successfully!")
+                    st.rerun()
     with tab_model:
         render_model_metrics()
 
